@@ -45,7 +45,7 @@ def altair_plot():
                         selection
                     ).properties(
                         width='container',
-                        height='container'
+                        height=400
                 )
     return plot_data.to_json()
 
