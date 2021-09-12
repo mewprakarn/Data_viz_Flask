@@ -11,6 +11,7 @@ import altair as alt
 app = Flask(__name__) # Set name of the app.
 app.config['SECRET_KEY'] = 'mykey'
 
+#*Render Template
 @app.route('/')
 def home():
     data = [ 35, 21, 38, 77, 32, 44, 47, 80, 37, 50, 62, 49, 92, 63, 62, 72, 63, 157, 83, 65, 103, 90, 87, 183, 86, 109, 108, 95, 72, 92]
@@ -20,12 +21,12 @@ def home():
 def altair():
     return render_template("altair.html")
 
+#*Altair Plot
 @app.route('/altair/scatter')
 def altair_plot():
     #* Load Data
     url = "https://gist.githubusercontent.com/puripant/857f1981667e8b42da2c72328ba94ead/raw/296d212615ab076254da03573f8f2493007cc76c/medals.csv"
     df = pd.read_csv(url)
-
     #* Set drop down list
     input_dropdown = alt.binding_select(options=df.name.unique())
     selection = alt.selection_single(fields=['name'], bind=input_dropdown, name='Country')
