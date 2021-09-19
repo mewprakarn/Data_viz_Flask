@@ -14,8 +14,12 @@ app.config['SECRET_KEY'] = 'mykey'
 #*Render Template
 @app.route('/')
 def home():
+    return render_template("home.html")
+
+@app.route('/d3')
+def d3():
     data = [ 35, 21, 38, 77, 32, 44, 47, 80, 37, 50, 62, 49, 92, 63, 62, 72, 63, 157, 83, 65, 103, 90, 87, 183, 86, 109, 108, 95, 72, 92]
-    return render_template("home.html",mydata=data)
+    return render_template("d3.html",mydata=data)
 
 @app.route("/altair")
 def altair():
