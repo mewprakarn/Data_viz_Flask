@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+html {
+    scroll-behavior: smooth;
+  }
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    border: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    min-width:600px;        /* Suppose you want minimum width of 1000px */
+    width: auto !important;  /* Firefox will set width as auto */
+
+}
+
+
+/* Style Navigation Menu */
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    
+}
+
+/* Navigation Links*/
+.navbar a {
+    float: left;
+    padding:12px;
+    color:white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size:24px;
+    width: 25%; /* Four equal-width links. If you have two links, use 50%, and 33.33% for three links, etc.. */
+    text-align: center;
+}
+
+/* Add a background color on mouse-over */
+.navbar a:hover {
+    background-color: #04AA6D;
+}
+
+.main {
+    max-width:960px;
+    margin: auto;
+    margin-top: 65px;
+    padding-top: 45px;
+    /* border: solid; */
+}
+
+.head{
+    max-width:960px;
+    margin: auto;
+    padding-top: 45px;
+    border: solid;
+}
+
+.overall {
+    border-color: black;
+    width: 960px;
+    height:100px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr; 
+    grid-gap: .2rem ;
+    /* gap: 0px 0px;  */
+    grid-template-areas: 
+      "content_1 content_2 content_3 content_4"; 
+  }
+
+.overall > div {
+    border: solid;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.overall_1 {grid-area: content_1;}
+.overall_2 {grid-area: content_2;}
+.overall_3 {grid-area: content_3;}
+.overall_4 {grid-area: content_4;}
+
+.overall_1:hover { 
+    color: white;
+    background-color: #4267B2;
+}
+.overall_2:hover { 
+    color: white;
+    background-color: #8a3ab9;
+}
+.overall_3:hover { 
+    color: white;
+    background-color: #1DA1F2;
+}
+.overall_4:hover { 
+    color: white;
+    background-color: #FF0000;
+}
+
+.fans_num {
+    font-size: 30px;
+    margin-top: 10px;
+    text-align: center;
+}
+.fans {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    float:right;
+}
+
+
+.total {
+    /* padding-top: 0%; */
+    margin-top: 2%;
+    margin-bottom: 0%;
+    /* border: solid; */
+    width: 960px;
+    height:100px;
+    display: grid; 
+    grid-template-columns: 0.5fr 1fr 1fr 0.5fr; 
+    grid-template-rows: 1fr; 
+    grid-gap: .2rem ;
+    /* gap: 0px 0px;  */
+    grid-template-areas: 
+      "total_1 total_2 total_3 total_4"; 
+  }
+
+.total > button {
+    background-color: white;
+    border: solid;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.total > button:hover {
+    color: white;
+    background-color: #555;
+}
+.total > button:focus {
+    color: white;
+    background-color: #555;
+}
+
+.total_posts {grid-area: total_2;}
+.total_engages {grid-area: total_3;}
+
+.total_num {
+    font-size: 34px;
+    margin-top: 10px;
+    text-align: center;
+}
+.total_text {
+    font-size: 20px;
+    /* margin-top: 10px; */
+    text-align: center;
+}
+
+.d3_charts {
+    margin-top: 0.5%;
+    /* border: solid; */
+    /* border-color: black; */
+    width: 960px;
+    height:500px;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    grid-gap: .2rem ;
+    /* gap: 0px 0px;  */
+    grid-template-areas: 
+      "content_5 content_5 content_7"
+      "content_6 content_6 content_8"; 
+  }
+
+.d3_charts > div {
+    border: solid;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.overall_5 {
+    /* width: 460px; */
+    left: 10px;
+    /* justify-self: center;  */
+    /* align-self: center;  */
+    /* border: solid; */
+    grid-area: content_5; 
+}
+.overall_6 {
+    /* width: 240px;
+	vertical-align: middle;  */
+    grid-area: content_6;
+}
+.overall_7 {
+    grid-area: content_7;
+    
+    /* justify-self: center;  */
+
+}
+.overall_8 {
+    grid-area: content_8;
+    /* justify-self: center;  */
+    /* width: 240px; */
+}
+
+#connected_scatter{
+    border: solid;
+    
+    height: 450px;
+}
+
+canvas{
+    display: block;
+    margin: auto;
+    height: 450px;
+    border: solid;
+
+}
+
+footer {
+    margin-top: 50px;
+    height: 200px;
+    background-color: #555;
+}
