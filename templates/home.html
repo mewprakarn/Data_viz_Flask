@@ -7,12 +7,11 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <!-- <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
         <link rel="stylesheet" href="static/css/data_viz.css">
-
         <script src="https://d3js.org/d3.v4.js"></script>  
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script>
+        <!-- <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script> -->
         <!-- <script src="https://d3js.org/d3.v4.js"></script>  -->
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
@@ -28,53 +27,71 @@
             </div>
 
             <div class = "main" id="overall">
-                <h1>Overall</h1>
+                <div class="overall_header">
+                    <h1>Overall<span id="overall_update_dt"> (updated at 31Dec2020)</span></h1>
+                    <span><select id="overall_selector" name="types">
+                        <option value="post">Posts</option>
+                        <option value="engagement">Engagements</option>
+                      </select></span>
+                </div>
                 <div class="overall">
-                    <div class="overall_1" >
-                        <h3><img src="../static/images/facebook.png" alt="facebook" width="20" height="20"> Facebook</h3>
-                        <p class="fans_num">2,500</p>
+                    <button class="btn" id="overall_1" value="facebook">
+                        <h3><img src="static/images/facebook.png" alt="facebook" width="20" height="20"> Facebook</h3>
+                        <p class="fans_num">2,084</p>
                         <p class="fans">Accounts</p>
-                    </div>
-                    <div class="overall_2">
-                        <h3><img src="../static/images/instagram.png" alt="instagram" width="20" height="20"> Instagram</h3>
-                        <p class="fans_num">2,500</p>
+                    </button>
+                    <button class="btn" id="overall_2" value="ig">
+                        <h3><img src="static/images/instagram.png" alt="instagram" width="20" height="20"> Instagram</h3>
+                        <p class="fans_num">1,010</p>
                         <p class="fans">Accounts</p>
-                    </div>
-                    <div class="overall_3"">
-                        <h3><img src="../static/images/twitter.png" alt="twitter" width="20" height="20"> Twitter</h3>
-                        <p class="fans_num">2,500</p>
+                    </button>
+                    <button class="btn" id="overall_3" value="twitter">
+                        <h3><img src="static/images/twitter.png" alt="twitter" width="20" height="20"> Twitter</h3>
+                        <p class="fans_num">504</p>
                         <p class="fans">Accounts</p>
-                    </div>
-                    <div class="overall_4" >
-                        <h3><img src="../static/images/youtube.png" alt="youtube" width="20" height="20"> Youtube</h3>
-                        <p class="fans_num">2,500</p>
+                    </button>
+                    <button class="btn" id="overall_4" value="youtube">
+                        <h3><img src="static/images/youtube.png" alt="youtube" width="20" height="20"> Youtube</h3>
+                        <p class="fans_num">1,031</p>
                         <p class="fans">Accounts</p>
-                    </div>
+                    </button>
                 </div>
      
-                <div class="total">
-                    <button class="total_posts">
-                        <p class="total_num">216,247</p>
-                        <p class="total_text">Total Posts</p>
-                    </button>
-                    <button class="total_engages">
-                        <p class="total_num">327,087,316</p>
-                        <p class="total_text">Total Engagements</p>
-                    </button>
-                </div>
-
 
                 <div class="d3_charts">
-                    <div class="overall_5" id="d3_basic_line"><p>Monthly Posts VS Engagments</p></div>
-                    <div class="overall_6" id="d3_connected_scatter"><p>Movement of Engagement/Post</p><select id="selectButton"></select></div>
-                    <div class="overall_7" id="d3_pie"><p>Portion by Platform</p><form></form></div>
-                    <div class="overall_8" id="d3_heatmap"><p>Post Period (HeatMap)</p></div>
+                    <div class="overall_5" id="d3_line_total">
+                        <p>Monthly <span class="topic_text">Posts</span>
+                        <!-- <span>Platforms: <select select id="selectButton"></select></span> -->
+                    </div>
+                    <div class="overall_6" id="d3_growth_change"><p>Movement of <span class="topic_text">Posts</span></p></div>
+                    <div class="overall_7" id="d3_pie">
+                        <p>Total Posts</p>
+                        <p>Total Engagements</p>
+                        <p>Avg. Engagements</p>
+                    </div>
+                    <div class="overall_8" id="d3_heatmap"><span class="topic_text">Posts</span> Concentration</p></div>
                 </div>
             </div>
 
             <div class = "main" id="content2">
                 <h1>Details</h1>
-                <div id="connected_scatter"></div>
+                <div class="pie">
+                    <div id="pie_1"><svg height="200" width="220"><circle cx="120" cy="100" r="80" stroke="black" stroke-width="3" fill="#4267B2" /></svg></div>
+                    <div id="pie_2"><svg height="200" width="220"><circle cx="120" cy="100" r="80" stroke="black" stroke-width="3" fill="#8a3ab9" /></svg></div>
+                    <div id="pie_3"><svg height="200" width="220"><circle cx="120" cy="100" r="80" stroke="black" stroke-width="3" fill="#1DA1F2" /></svg></div>
+                    <div id="pie_4"><svg height="200" width="220"><circle cx="120" cy="100" r="80" stroke="black" stroke-width="3" fill="#FF0000" /></svg></div>
+                </div>
+                <div class="heatmap">
+                    <div id="heatmap_1"></div>
+                    <div id="heatmap_2"></div>
+                </div>
+                <div class="top_rank" id="ranking1"></div>
+                <div class="scatter" id="scatter"></div>
+                <div class="scatter" id="scatter2"></div>
+                <div class="scatter" id="stream"></div>
+
+
+
             </div>
 
             <div class = "main" id="content3">
@@ -86,30 +103,83 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus maiores accusamus debitis velit eos, incidunt ducimus a perspiciatis asperiores amet vel modi quos esse consectetur corrupti, unde odio? Adipisci blanditiis quaerat illum maxime laborum modi rem distinctio, similique cupiditate nihil sint cumque delectus repudiandae aliquam iste vitae! Explicabo impedit fuga nihil, dolore ducimus reiciendis ut eius! Ipsum, debitis! Iure, placeat totam? Unde consectetur possimus eius adipisci sit repudiandae eveniet et necessitatibus laboriosam porro veritatis doloribus reiciendis amet corrupti error illum, impedit rerum voluptatem excepturi est non, hic eaque aperiam quae! Repellendus ab odio saepe maiores ad esse dignissimos autem. Mollitia suscipit in soluta architecto aspernatur placeat minima dicta eius, voluptate nulla est sint ipsum distinctio reiciendis obcaecati error. Temporibus a labore aliquam placeat tenetur asperiores sapiente harum numquam eaque facilis, perferendis consequatur. Eum nobis, saepe veniam expedita quod, facilis, numquam autem laborum distinctio voluptate obcaecati quia nesciunt iusto est? Explicabo deleniti in eos maiores sed consequatur nam accusantium eaque, quisquam tempora inventore, ipsa beatae nostrum provident ducimus earum alias eius cupiditate minima nemo esse. A eum, porro qui inventore incidunt non saepe sequi fugiat sunt aliquid nihil recusandae sed quis quam corrupti iste doloribus. Repellat, hic doloremque? Facere obcaecati laborum voluptatem asperiores sapiente, assumenda nam aspernatur nulla accusantium alias explicabo placeat molestias sint, iure tempora totam! Exercitationem amet quisquam ex ducimus, sapiente at dicta fuga optio dolor? Nostrum commodi aliquam, officia sit beatae similique consequatur doloribus corporis quis possimus ipsa placeat modi, nemo asperiores amet veritatis et. Neque impedit odio odit, minima id molestias dignissimos dolores, perferendis sed suscipit temporibus ducimus, eligendi nemo unde enim nostrum qui maxime sequi deleniti in. Repellendus accusamus, dolorem non assumenda voluptatibus voluptates aperiam harum minus ea ab ut saepe? Ab unde quibusdam provident neque aspernatur temporibus dolorem dolores at modi, cum consectetur quis nemo?</p>>
             </div>
 
-        <!-- <script src="js/scatter.js"></script> -->
-        <!-- <script src="js/scatter_2.js"></script> -->
-        <!-- <script src="js/scatter_3.js"></script> -->
-        <script src="../static/js/d3_connected_scatter.js"></script>
 
-        <script src="../static/js/d3_basic_line.js"></script>
-        <script src="../static/js/d3_heatmap.js"></script>
-        <script src="../static/js/d3_pie.js"></script>
-        <script>
-            $(".fans_num").each(function() {
-            var value = $(this).html();
-            var element = $(this);
-            // Animate the element from start value to end value (end value is the default value we got from .html())
-            $({ animateValue: 0 }).animate({ animateValue: value }, {
-                duration: 1000,
-                easing: 'easeOutExpo', 
-                step: function () {
-                // Update text
-                element.text(Math.round(this.animateValue));
-                }
-            });
-            });
-        </script>
+<!-- Overall Section -->
+        <script src="static/js/d3_line_total_v2.js"></script>
+        <script src="static/js/d3_growth_change_v2.js"></script>
+        <script src="static/js/d3_heatmap.js"></script>
+        <script src="static/js/update.js"></script>
         
+<!-- Detail Section -->
+        <script src="static/js/altair_heatmap1.js"></script>
+        <script src="static/js/altair_heatmap2.js"></script>
+        <script src="static/js/altair_ranking.js"></script>
+        <script src="static/js/altair_scatter.js"></script>
+        <script src="static/js/altair_scatter2.js"></script>
+        <script src="static/js/altair_stream.js"></script>
+
+
+        <script>
+            // Dropdwon Selection
+            document.getElementById("overall_selector").onchange = function(){select_data()};
+            function select_data() {
+                var select = document.getElementById('overall_selector')
+                var value = select.options[select.selectedIndex].value
+                let text1;
+    
+                if (value == "post") {
+                    text1 = "Posts"
+                } else {
+                    text1 = "Engagements"
+                }
+    
+                var topic_texts = document.getElementsByClassName("topic_text");
+                for (var i = 0; i < topic_texts.length; i++) {
+                    topic_texts[i].innerHTML = text1;}     
+
+                let line_data;
+                let bar_data;
+                let heatmap_data;
+
+                if (value == "post") {
+                    line_data = "static/data/pivot_post_total.csv"
+                    bar_data = "static/data/pivot_post_change_rate.csv"
+                    heatmap_data = "static/data/pivot_post_ratios.csv"
+                } else {
+                    line_data = "static/data/pivot_engage_total.csv"
+                    bar_data = "static/data/pivot_engage_change_rate.csv"
+                    heatmap_data = "static/data/pivot_engage_ratios.csv"
+                }
+                
+                // Line Total Update 
+                    // run the updateChart function with this selected option
+                    d3.csv(line_data,
+                    // When reading the csv, I must format variables: created_month
+                    function(d){
+                        return {date : d3.timeParse("%Y-%m-%d")(d.created_month), facebook:d.facebook, ig:d.instagram, twitter:d.twitter, youtube:d.youtube,all_platforms:d.all_platforms}
+                    },
+                    function(data) { update_line(data,"all_platforms")}
+                    );
+                // Bar Growth Update 
+                    // run the updateChart function with this selected option
+                    d3.csv(bar_data,
+                    // When reading the csv, I must format variables: created_month
+                    function(d){
+                        return {date : d3.timeParse("%Y-%m-%d")(d.created_month), facebook:d.facebook, ig:d.instagram, twitter:d.twitter, youtube:d.youtube,all_platforms:d.all_platforms}
+                    },
+                    function(data) { update_bar(data,"all_platforms")}
+                    );
+                // Heatmap Update 
+                    // run the updateChart function with this selected option
+                    d3.csv(heatmap_data,
+                    // When reading the csv, I must format variables: created_month
+                    function(d){
+                        return {group : d.month_name,variable:d.day_name, facebook:d.facebook, ig:d.instagram, twitter:d.twitter, youtube:d.youtube,all_platforms:d.all_platforms}
+                    },
+                    function(data) { update_heatmap(data,"all_platforms")}
+                    );
+            }
+        </script>
 <footer>
 
 </footer>

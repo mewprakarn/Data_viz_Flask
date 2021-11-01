@@ -7,6 +7,15 @@ from flask_bootstrap import Bootstrap
 
 import pandas as pd
 import altair as alt
+##########################################################################################################################################
+# Load data into DataFrame
+##########################################################################################################################################
+
+# overall_data = pd.read_csv('static/database/overall_annual.csv')
+# account_dict = {key:"{:,}".format(overall_data[overall_data.channel == key]['annual_accounts'][0]) for key in overall_data.channel}
+##########################################################################################################################################
+# Flask Set-Up
+##########################################################################################################################################
 
 app = Flask(__name__) # Set name of the app.
 app.config['SECRET_KEY'] = 'mykey'
@@ -42,7 +51,7 @@ def altair_plot():
     #* Color Settings
     color = alt.condition(selection,
                         alt.Color('name:N', legend=None),
-                        alt.value('lightgray'))
+                        alt.value('lightgray'))                     
     #* Chart Plot
     plot_data = alt.Chart(df).transform_filter(alt.datum.gold > 0).mark_point(size=50,clip=True ).encode(
                         x='year:N',
