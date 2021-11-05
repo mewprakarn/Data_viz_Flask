@@ -245,10 +245,22 @@ h3 {
 
 .summary_number {
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
+    margin: 10px;
+    font-size: 30px;
+    /* float:center; */
+    /* border: solid; */
+    text-align: center;
+    transform: translateY(30px)
+}
+.summary_text {
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px;
     font-size: 20px;
-    font-weight: bold;
-    float:center;
+    /* float:center; */
+    /* border: solid; */
+    text-align: center;
+    transform: translateY(30px)
+
 }
 
 .overall_5 {
