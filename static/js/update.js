@@ -8,10 +8,10 @@ d3.selectAll(".btn").on("click", function(d) {
     // Data Input Setting
     var select = document.getElementById('overall_selector')
     var value = select.options[select.selectedIndex].value
+    
     let line_data;
     let bar_data;
     let heatmap_data;
-
     if (value == "post") {
         line_data = "static/data/pivot_post_total.csv"
         bar_data = "static/data/pivot_post_change_rate.csv"

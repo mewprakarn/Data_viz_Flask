@@ -16,6 +16,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -28,7 +29,7 @@
 
             <div class = "main" id="overall">
                 <div class="overall_header">
-                    <h1>Overall<span id="overall_update_dt"> (updated at 31Dec2020)</span></h1>
+                    <h1>Overall<span id="overall_update_dt"> (updated at {{update_date}})</span></h1>
                     <span><select id="overall_selector" name="types">
                         <option value="post">Posts</option>
                         <option value="engagement">Engagements</option>
@@ -37,22 +38,22 @@
                 <div class="overall">
                     <button class="btn" id="overall_1" value="facebook">
                         <h3><img src="static/images/facebook.png" alt="facebook" width="20" height="20"> Facebook</h3>
-                        <p class="fans_num">2,084</p>
+                        <p class="fans_num"> {{ account_dict['facebook'] }} </p>
                         <p class="fans">Accounts</p>
                     </button>
                     <button class="btn" id="overall_2" value="ig">
                         <h3><img src="static/images/instagram.png" alt="instagram" width="20" height="20"> Instagram</h3>
-                        <p class="fans_num">1,010</p>
+                        <p class="fans_num">{{ account_dict['instagram'] }}</p>
                         <p class="fans">Accounts</p>
                     </button>
                     <button class="btn" id="overall_3" value="twitter">
                         <h3><img src="static/images/twitter.png" alt="twitter" width="20" height="20"> Twitter</h3>
-                        <p class="fans_num">504</p>
+                        <p class="fans_num">{{ account_dict['twitter'] }}</p>
                         <p class="fans">Accounts</p>
                     </button>
                     <button class="btn" id="overall_4" value="youtube">
                         <h3><img src="static/images/youtube.png" alt="youtube" width="20" height="20"> Youtube</h3>
-                        <p class="fans_num">1,031</p>
+                        <p class="fans_num">{{ account_dict['youtube'] }}</p>
                         <p class="fans">Accounts</p>
                     </button>
                 </div>
@@ -66,8 +67,11 @@
                     <div class="overall_6" id="d3_growth_change"><p>Movement of <span class="topic_text">Posts</span></p></div>
                     <div class="overall_7" id="d3_pie">
                         <p>Total Posts</p>
+                        <p class='summary_number'>4,087,239</p>
                         <p>Total Engagements</p>
+                        <p class='summary_number'>5,666,109,372</p>
                         <p>Avg. Engagements</p>
+                        <p class='summary_number'>1,386</p>
                     </div>
                     <div class="overall_8" id="d3_heatmap"><span class="topic_text">Posts</span> Concentration</p></div>
                 </div>

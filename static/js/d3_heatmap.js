@@ -42,6 +42,7 @@ function heatmap(data, selectedGroup){
     .call(d3.axisBottom(x).tickSize(0))
     .selectAll("text")	
       .style("text-anchor", "right")
+      .style("font-size", 14)
       .attr("dx", "-1.5em")
       .attr("dy", "0.1em")
       .attr("transform", "rotate(-90)")
@@ -54,13 +55,14 @@ function heatmap(data, selectedGroup){
     .padding(0.05);
 
   heatmap_svg.append("g")
-    .style("font-size", 12)
+    .style("font-size", 14)
     .call(d3.axisLeft(y).tickSize(0))
     .select(".domain").remove()
 
   // Build color scale
   var myColor = d3.scaleSequential()
-    .domain([0,d3.max(data, function(d) {return d[selectedGroup]})])
+    // .domain([0,d3.max(data, function(d) {return d[selectedGroup]})])
+    .domain([0,20])
     .interpolator(d3.interpolateGreens);
 
     // .interpolator(d3.interpolateHsl("white", "#69b3a2"));
@@ -82,22 +84,22 @@ function heatmap(data, selectedGroup){
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var heatmap_mouseover = function(d) {
-    // tooltip
-    //   .style("opacity", 1)
+    tooltip
+      .style("opacity", 1)
     d3.select(this)
       .style("stroke", "black")
       .style("stroke-width", 2)
       .style("opacity", 1)
   }
-  // var heatmap_mousemove = function(d) {
-  //   tooltip
-  //     .html(d[selectedGroup]+"%")
-  //     .style("left", (d3.mouse(this)[0]) + "px")
-  //     .style("top", (d3.mouse(this)[1]) + "px")
-  // }
+  var heatmap_mousemove = function(d) {
+    tooltip
+      .html(d[selectedGroup]+"%")
+      .style("left", (d3.mouse(this)[0]) + "px")
+      .style("top", (d3.mouse(this)[1]) + "px")
+  }
   var heatmap_mouseleave = function(d) {
-    // tooltip
-    //   .style("opacity", 0)
+    tooltip
+      .style("opacity", 0)
     d3.select(this)
       .style("stroke", "none")
       .style("opacity", 0.9)
@@ -120,7 +122,7 @@ function heatmap(data, selectedGroup){
         .style("stroke", "none")
         .style("opacity", 0.9)
       .on("mouseover", heatmap_mouseover)
-      // .on("mousemove", heatmap_mousemove)
+      .on("mousemove", heatmap_mousemove)
       .on("mouseleave", heatmap_mouseleave);
 }
 
@@ -130,15 +132,15 @@ function update_heatmap(data,selectedGroup) {
   // Create New Data with the selection
   var new_data = data.map(function(d) {return {group : d.group,variable:d.variable, selectedGroup:+d[selectedGroup]}})
   var heatmap_svg = d3.select("#d3_heatmap")
-  
-
   // Assign Color to each Source
   var heatmap_color = d3.scaleOrdinal()
       .domain(["all_platforms","facebook","ig","youtube","twitter"])
       .range([d3.interpolateGreens,d3.interpolateBlues,d3.interpolateBuPu, d3.interpolateReds,d3.interpolateBlues]);
   var myColor = d3.scaleSequential()
     .domain([0,d3.max(new_data, function(d) {return d.selectedGroup})])
+    // .domain([0,20])
     .interpolator(heatmap_color(selectedGroup));
+
   // interpolateBlues
   // interpolateOrRd
   // interpolateReds
@@ -146,7 +148,28 @@ function update_heatmap(data,selectedGroup) {
   // newColor = d3.scaleSequential()
   //     .domain([0,d3.max(new_data, function(d) {return d.selectedGroup})])
   //     .interpolator(d3.interpolateGreens);
-
+  // Three function that change the tooltip when user hover / move / leave a cell
+  var heatmap_mouseover = function(d) {
+    tooltip
+      .style("opacity", 1)
+    d3.select(this)
+      .style("stroke", "black")
+      .style("stroke-width", 2)
+      .style("opacity", 1)
+  }
+  var heatmap_mousemove = function(d) {
+    tooltip
+      .html(d[selectedGroup]+"%")
+      .style("left", (d3.mouse(this)[0]) + "px")
+      .style("top", (d3.mouse(this)[1]) + "px")
+  }
+  var heatmap_mouseleave = function(d) {
+    tooltip
+      .style("opacity", 0)
+    d3.select(this)
+      .style("stroke", "none")
+      .style("opacity", 0.9)
+  }
   // Remove previous tiles
   heatmap_svg.selectAll(".heatmap_tile")
     .transition()
@@ -157,5 +180,8 @@ function update_heatmap(data,selectedGroup) {
       .style("opacity", 1)
       .style("fill", function(d) { return myColor(d[selectedGroup])} )
       .style("opacity", 0.9)
+      .on("mouseover", heatmap_mouseover)
+      .on("mousemove", heatmap_mousemove)
+      .on("mouseleave", heatmap_mouseleave);
   }
  

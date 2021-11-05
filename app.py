@@ -11,8 +11,10 @@ import altair as alt
 # Load data into DataFrame
 ##########################################################################################################################################
 
-# overall_data = pd.read_csv('static/database/overall_annual.csv')
-# account_dict = {key:"{:,}".format(overall_data[overall_data.channel == key]['annual_accounts'][0]) for key in overall_data.channel}
+overall_data = pd.read_csv('static/data/overall_annual.csv')
+account_dict = {key:"{:,}".format(overall_data[overall_data.channel == key]['annual_accounts'].values[0]) for key in overall_data.channel}
+update_date = pd.to_datetime(overall_data['latest_created_at'].max(),format='%Y-%m-%d %H:%M:%S').strftime('%d%b%Y')
+# facebook = overall_data[overall_data.channel == 'facebook']['annual_accounts'][0]
 ##########################################################################################################################################
 # Flask Set-Up
 ##########################################################################################################################################
@@ -23,7 +25,7 @@ app.config['SECRET_KEY'] = 'mykey'
 #*Render Template
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template("home.html",account_dict=account_dict,update_date=update_date)
 
 @app.route('/bar_chart')
 def bar_chart():
