@@ -1,0 +1,449 @@
+
+/* Variables */
+:root {
+  --main_width: 960px; 
+  --main_height: 500px; 
+  --font_color:white;
+}
+
+
+* {
+    box-sizing:border-box;
+    border-color: whitesmoke;
+    background-color: black;
+    font-family: "Monospace", sans-serif;
+}
+
+p,h3,img,span {
+  background-color: transparent;
+
+}
+
+
+
+/** --------------------------------------------------------------------------- */
+/** Header */
+/** --------------------------------------------------------------------------- */
+
+li, a, button {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--font_color);
+    /* background-color: #000000; */
+    text-decoration: none;
+}
+body{
+  margin-top:0% ;
+  padding-top:0% ;
+}
+header {
+    width: 100%;
+    margin-top: 0%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0%;
+    /* background-color: #000000; */
+  
+}
+
+.logo {
+    margin: 0%;
+    padding:0%;
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 18px;
+    /* border: solid; */
+    text-align: center;
+}
+.logo_text{
+  display: inline-block;
+  line-height: 1;
+  margin-left: 0px;
+
+}
+#logo_subtext{
+  letter-spacing: 9px;
+  margin-left: 9px;
+}
+
+.cta {
+    order: 3
+}
+
+#cta {
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+#cta:hover {
+    background-color: rgba(0, 136, 169, 0.8);
+}
+
+
+/** --------------------------------------------------------------------------- */
+/** Side Navigation */
+/** --------------------------------------------------------------------------- */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+/** --------------------------------------------------------------------------- */
+/** Slideshow container */
+/** --------------------------------------------------------------------------- */
+.slideshow-container {
+    width: var(--main_width);
+    /* max-height: var(--main_height); */
+    position: relative;
+    margin: auto;
+    /* border: solid;
+    border-color: #edf0f1; */
+  }
+
+  /* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }  
+
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  /* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(109, 108, 108, 0.8);
+  }
+
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+
+  .active, .dot:hover {
+    background-color: #4e4c4c;
+    
+  }
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .8}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .9}
+    to {opacity: 1}
+  }
+
+/* Overall slide */
+  .overall_slide {
+      width: var(--main_width);
+      height: var(--main_height);
+      /* background-color: black; */
+  }
+
+/* Overall text */
+.slide-number {
+    text-align: center;
+    font-size: 48px;
+    color: white;
+}
+
+
+
+/** --------------------------------------------------------------------------- */
+/** Slide 1: Overall accounts  */
+/** --------------------------------------------------------------------------- */
+#overall_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+  margin-bottom: 0%;
+  padding: 0%;
+  /* border: solid;
+  border-color: whitesmoke; */
+}
+#overall_logo >div {
+  text-align: center;
+  padding: 0px;
+  width: 150px;
+  margin: 0% 0% 0% 15px;
+  /* border: solid;
+  border-color: whitesmoke; */
+}
+
+#overall_account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0%;
+  border: solid;
+  text-align: center;
+}
+.btn {
+  margin: 0% 0% 0% 15px;
+  padding: 0%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-width:20px;
+  border-style: solid;
+}
+
+.account_num {
+  margin: 0%;
+  font-size: 32px;
+}
+.accounts {
+  margin: 0%;
+  font-size: 16px;
+}
+#account_1{
+  border-color: #1778F2;
+}
+#account_2{
+  border-color: #bc2a8d;
+}
+#account_3{
+  border-color: #36D8FF;
+}
+#account_4{
+  border-color: #FF0000;
+}
+#overall_desc{
+  padding: 0% 10%;
+  color: var(--font_color);
+  font-size: 16px;
+}
+
+/** --------------------------------------------------------------------------- */
+/** Slide 3: Overall Summary  */
+/** --------------------------------------------------------------------------- */
+
+/*? Button & Filter  */
+.overall{
+  /* display: flex; */
+  padding: 0%;
+  margin: 0% 50px 2px 50px;
+  /* border: solid;
+  border-color: white; */
+  color: var(--font_color);
+}
+
+/* .overall > img{
+  
+  vertical-align: text-top;
+} */
+.summary_btn {
+  cursor: pointer;
+  height: 35px;
+  margin: 0%;
+  padding: 2px;
+  /* border: solid;
+  border-color: white; */
+  border-radius: 5px;
+}
+
+#overall_update_dt{
+  font-size: 12px;
+}
+
+#overall_selector {
+  cursor: pointer;
+  float: right;
+  text-align: center;
+  border: solid;
+  border-color: white;
+  border-radius: 5px;
+  margin-top: 2px;
+  color: var(--font_color);
+}
+
+#overall_1:hover  { 
+  color: white;
+  background-color: #4267B2;
+}
+
+#overall_2:hover { 
+  color: white;
+  background-color: #8a3ab9;
+}
+#overall_3:hover { 
+  color: white;
+  background-color: #1DA1F2;
+}
+#overall_4:hover { 
+  color: white;
+  background-color: #FF0000;
+}
+
+#overall_1:focus  { 
+  color: white;
+  background-color: #4267B2;
+}
+#overall_2:focus { 
+  color: white;
+  background-color: #8a3ab9;
+}
+#overall_3:focus { 
+  color: white;
+  background-color: #1DA1F2;
+}
+#overall_4:focus { 
+  color: white;
+  background-color: #FF0000;
+}
+
+/*? D3 Graph*/
+
+.d3_charts{
+  height: 400px;
+  padding: 0%;
+  margin: 0% 50px 0% 50px;
+  /* border: solid;
+  border-color: white; */
+  color: var(--font_color);
+
+  margin-top: 0%;
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 0.75fr; 
+  grid-gap: 0rem ;
+  /* gap: 0px 0px;  */
+  grid-template-areas: 
+    "content_5 content_5 content_8"
+    "content_6 content_6 content_8"; 
+}
+/*? D3 Chart */
+.d3_charts > div {
+  border: solid;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 20px;
+}
+.overall_5 {
+  left: 10px;
+  grid-area: content_5; 
+}
+.overall_6 {
+  grid-area: content_6;
+}
+.overall_8 {
+  grid-area: content_8;
+}
+#x_line_axis path{
+  stroke: white;
+} 
+#x_line_axis text{
+  fill: white;
+}   
+#y_line_axis path{
+  stroke: white;
+} 
+#y_line_axis text{
+  fill: white;
+}  
+#x_bar_axis path{
+  stroke: white;
+}  
+
+.heatmap{
+  margin-top: 0%;
+}
+#x_heatmap_axis text{
+  fill: white;
+}   
+
+#y_heatmap_axis text{
+  fill: white;
+}   
+
+
+.vega-bind select{
+  color: white;
+  border-radius: 5px;
+}
+
+svg {
+  margin-top: 0%;
+  padding: 0%;
+  background-color: transparent;
+}
+
+.heatmap_tooltip {
+  position: fixed;
+}
+
+/** --------------------------------------------------------------------------- */
+/** Slide 3: Overall Summary  */
+/** --------------------------------------------------------------------------- */

@@ -2,7 +2,7 @@
 // console.log(heatmap_data)
 
 // When the button is changed, run the updateChart function
-d3.selectAll(".btn").on("click", function(d) {
+d3.selectAll(".summary_btn").on("click", function(d) {
     // recover the option that has been chosen
     var selectedOption = d3.select(this).property("value")
     // Data Input Setting

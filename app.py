@@ -25,6 +25,7 @@ f = open('static/data/ranking.json',)
 ranking_data = json.load(f)
 f.close()
 # facebook = overall_data[overall_data.channel == 'facebook']['annual_accounts'][0]
+
 ##########################################################################################################################################
 # Flask Set-Up
 ##########################################################################################################################################
@@ -35,21 +36,41 @@ app.config['SECRET_KEY'] = 'mykey'
 #*Render Template
 @app.route('/')
 def home():
-    return render_template("home_v2.html",account_dict=account_dict,update_date=update_date,spec=heatmap_data,ranking_spec=ranking_data)
+    return render_template("home_v3.html",account_dict=account_dict,update_date=update_date,spec=heatmap_data,ranking_spec=ranking_data)
 
-@app.route('/bar_chart')
-def bar_chart():
-    data = [ 35, 21, 38, 77, 32, 44, 47, 80, 37, 50, 62, 49, 92, 63, 62, 72, 63, 157, 83, 65, 103, 90, 87, 183, 86, 109, 108, 95, 72, 92]
-    return render_template("bar_chart.html",mydata=data)
+@app.route('/ranking')
+def ranking_page():
+    return render_template("ranking.html")
 
-@app.route('/scatter')
-def scatter():
-    # data = [ 35, 21, 38, 77, 32, 44, 47, 80, 37, 50, 62, 49, 92, 63, 62, 72, 63, 157, 83, 65, 103, 90, 87, 183, 86, 109, 108, 95, 72, 92]
-    return render_template("scatter.html")
+@app.route('/engagement')
+def engagement_page():
+    return render_template("engagement.html")
 
-@app.route("/altair")
-def altair():
-    return render_template("altair.html")
+@app.route('/category')
+def category_page():
+    return render_template("category.html")
+
+
+
+
+
+
+
+
+
+# @app.route('/bar_chart')
+# def bar_chart():
+#     data = [ 35, 21, 38, 77, 32, 44, 47, 80, 37, 50, 62, 49, 92, 63, 62, 72, 63, 157, 83, 65, 103, 90, 87, 183, 86, 109, 108, 95, 72, 92]
+#     return render_template("bar_chart.html",mydata=data)
+
+# @app.route('/scatter')
+# def scatter():
+#     # data = [ 35, 21, 38, 77, 32, 44, 47, 80, 37, 50, 62, 49, 92, 63, 62, 72, 63, 157, 83, 65, 103, 90, 87, 183, 86, 109, 108, 95, 72, 92]
+#     return render_template("scatter.html")
+
+# @app.route("/altair")
+# def altair():
+#     return render_template("altair.html")
 
 #*Altair Plot
 @app.route('/altair')

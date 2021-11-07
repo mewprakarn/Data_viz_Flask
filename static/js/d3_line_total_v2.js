@@ -1,8 +1,8 @@
 // set the dimensions and margins of the graph
 var line_total_container = document.getElementById('d3_line_total'),
-    line_total_width = 550,
-    line_total_height = 200,
-    line_total_margin = {top: 10, right: 60, bottom: 30, left: 60};
+    line_total_width = 450,
+    line_total_height = 160,
+    line_total_margin = {top: 10, right: 30, bottom: 30, left: 60};
 
 // append the svg object to the body of the page   
 // var line_total_svg = d3.select("#d3_line_total")
@@ -33,7 +33,7 @@ function line_total(data, selectedGroup) {
         .attr("transform","translate(" + line_total_margin.left + "," + line_total_margin.top + ")");
     // List of groups
     var allGroup = ["all_platforms","facebook", "ig", "twitter","youtube"];
-
+    
     // add X axis
     var x_line = d3.scaleTime()
         .domain(d3.extent(data, function(d) {return d.date;})) // Get min/max date
@@ -43,12 +43,14 @@ function line_total(data, selectedGroup) {
         .attr("transform","translate(0,"+line_total_height+")")
         .call(d3.axisBottom(x_line).tickFormat(d3.timeFormat("%b%y")));
     // add y axis
+    var formatThousand =  d3.format(".2s");
     var y_line = d3.scaleLinear()
         .domain([d3.min(data, function(d) {return d[selectedGroup]/1.8;}),d3.max(data, function(d) {return d[selectedGroup]*1.1;})])
         .range([line_total_height,0]);
     line_total_svg.append("g")
         .attr("id", "y_line_axis")
-        .call(d3.axisLeft(y_line))
+        .call(d3.axisLeft(y_line).tickFormat(formatThousand));
+
     // Initialize line with group a
     var line = line_total_svg
         .append("g")
@@ -72,7 +74,7 @@ function line_total(data, selectedGroup) {
             .attr("cy",function(d) {return y_line(+d[selectedGroup])})
             .attr("r",7)
             .style("fill","#69b3a2")
-            .attr("stroke","black")
+            // .attr("stroke","#69b3a2")
             .style("stroke-width",2)
     
 }
@@ -94,13 +96,14 @@ function update_line(data,selectedGroup) {
         .domain(d3.extent(data, function(d) {return d.date;})) // Get min/max date
         .range([0,line_total_width]);
    // Update y axis
+   var formatThousand =  d3.format(".2s");
    var y_line = d3.scaleLinear()
         .domain([d3.min(data, function(d) {return d[selectedGroup]/1.8;}),d3.max(data, function(d) {return d[selectedGroup]*1.1;})])
         .range([line_total_height,0]);
 
         
     line_total_svg.select("#y_line_axis")
-        .transition().duration(800).call(d3.axisLeft(y_line))
+        .transition().duration(800).call(d3.axisLeft(y_line).tickFormat(formatThousand))
     
     // Give these new data to update line and dot
     line_total_svg.select('.line_total')
