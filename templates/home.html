@@ -11,12 +11,11 @@
         <link rel="stylesheet" href="static/css/data_viz.css">
         <script src="https://d3js.org/d3.v4.js"></script>  
         <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-        <!-- <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script> -->
-        <!-- <script src="https://d3js.org/d3.v4.js"></script>  -->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
 
+        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -112,12 +111,16 @@
         <script src="static/js/update.js"></script>
         
 <!-- Detail Section -->
-        <script src="static/js/altair_heatmap1.js"></script>
-        <script src="static/js/altair_heatmap2.js"></script>
+        <script src="static/js/altair_parse.js"></script>
+        <script>
+            // parse("heatmap_1",'{{spec|tojson|safe}}');
+            parse("ranking1",'{{ranking_spec|tojson|safe}}');
+         </script>
+        <!-- <script src="static/js/altair_heatmap2.js"></script>
         <script src="static/js/altair_ranking.js"></script>
         <script src="static/js/altair_scatter.js"></script>
         <script src="static/js/altair_scatter2.js"></script>
-        <script src="static/js/altair_stream.js"></script>
+        <script src="static/js/altair_stream.js"></script> -->
 
 
         <script>

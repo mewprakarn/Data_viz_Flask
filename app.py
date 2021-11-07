@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, session, flash
+from flask import Flask, render_template, request, session, flash, json, jsonify
 from flask_wtf import FlaskForm
 from wtforms import TextField,TextAreaField, SubmitField, BooleanField, RadioField, SelectField
 from wtforms import validators
 from wtforms.validators import DataRequired
 from flask_bootstrap import Bootstrap
 
+import json
 import pandas as pd
 import altair as alt
 ##########################################################################################################################################
@@ -14,6 +15,15 @@ import altair as alt
 overall_data = pd.read_csv('static/data/overall_annual.csv')
 account_dict = {key:"{:,}".format(overall_data[overall_data.channel == key]['annual_accounts'].values[0]) for key in overall_data.channel}
 update_date = pd.to_datetime(overall_data['latest_created_at'].max(),format='%Y-%m-%d %H:%M:%S').strftime('%d%b%Y')
+
+
+f = open('static/data/heatmap.json',)
+heatmap_data = json.load(f)
+f.close()
+
+f = open('static/data/ranking.json',)
+ranking_data = json.load(f)
+f.close()
 # facebook = overall_data[overall_data.channel == 'facebook']['annual_accounts'][0]
 ##########################################################################################################################################
 # Flask Set-Up
@@ -25,7 +35,7 @@ app.config['SECRET_KEY'] = 'mykey'
 #*Render Template
 @app.route('/')
 def home():
-    return render_template("home.html",account_dict=account_dict,update_date=update_date)
+    return render_template("home_v2.html",account_dict=account_dict,update_date=update_date,spec=heatmap_data,ranking_spec=ranking_data)
 
 @app.route('/bar_chart')
 def bar_chart():
@@ -43,10 +53,10 @@ def altair():
 
 #*Altair Plot
 @app.route('/altair')
-def altair_plot():
+def heatmap_plot():
     #* Load Data
     url = "https://gist.githubusercontent.com/puripant/857f1981667e8b42da2c72328ba94ead/raw/296d212615ab076254da03573f8f2493007cc76c/medals.csv"
-    df = pd.read_csv(url)
+    df = pd.read_json(url)
     #* Set drop down list
     input_dropdown = alt.binding_select(options=df.name.unique())
     selection = alt.selection_single(fields=['name'], bind=input_dropdown, name='Country')
