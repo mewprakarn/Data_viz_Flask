@@ -24,7 +24,14 @@ f.close()
 f = open('static/data/ranking.json',)
 ranking_data = json.load(f)
 f.close()
-# facebook = overall_data[overall_data.channel == 'facebook']['annual_accounts'][0]
+
+f = open('static/data/Scatter.json',)
+scatter_data = json.load(f)
+f.close()
+
+f = open('static/data/Streamgraph.json',)
+stream_data = json.load(f)
+f.close()
 
 ##########################################################################################################################################
 # Flask Set-Up
@@ -36,19 +43,19 @@ app.config['SECRET_KEY'] = 'mykey'
 #*Render Template
 @app.route('/')
 def home():
-    return render_template("home_v3.html",account_dict=account_dict,update_date=update_date,spec=heatmap_data,ranking_spec=ranking_data)
+    return render_template("home_v3.html",account_dict=account_dict,update_date=update_date)
 
 @app.route('/ranking')
 def ranking_page():
-    return render_template("ranking.html")
+    return render_template("ranking.html",ranking_spec=ranking_data)
 
 @app.route('/engagement')
 def engagement_page():
-    return render_template("engagement.html")
+    return render_template("engagement.html",heatmap_spec1=heatmap_data,heatmap_spec2=heatmap_data)
 
 @app.route('/category')
 def category_page():
-    return render_template("category.html")
+    return render_template("category.html",scatter_spec=scatter_data,stream_spec=stream_data)
 
 
 

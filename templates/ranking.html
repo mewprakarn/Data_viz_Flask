@@ -42,11 +42,14 @@
             <div class="top_rank" id="ranking1"></div>
         </div>
 
-
         <!--! JavaScript -->
-
         <!--* Graph Section -->
         <script src="static/js/altair_ranking.js"></script>
+        <!-- <script src="static/js/altair_parse.js"></script>
+        <script>
+            parse("ranking1",'{{ranking_spec|tojson|safe}}');
+        </script> -->
+
         <script>
             function openNav() {
               document.getElementById("mySidenav").style.width = "200px";

@@ -47,8 +47,14 @@
         <!--! JavaScript -->
 
         <!--* Graph Section -->
-        <script src="static/js/altair_heatmap1.js"></script>
-        <script src="static/js/altair_heatmap3.js"></script>
+        <!-- <script src="static/js/altair_heatmap1.js"></script>
+        <script src="static/js/altair_heatmap3.js"></script> -->
+       
+        <script src="static/js/altair_parse.js"></script>
+        <script>
+            parse("heatmap_1",'{{heatmap_spec1|tojson|safe}}');
+            parse("heatmap_3",'{{heatmap_spec2|tojson|safe}}');
+        </script>
         <script>
             function openNav() {
               document.getElementById("mySidenav").style.width = "200px";

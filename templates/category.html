@@ -47,8 +47,15 @@
         <!--! JavaScript -->
 
         <!--* Graph Section -->
-        <script src="static/js/altair_scatter2.js"></script>
-        <script src="static/js/altair_stream.js"></script>
+        <!-- <script src="static/js/altair_scatter2.js"></script>
+        <script src="static/js/altair_stream.js"></script> -->
+
+        <script src="static/js/altair_parse.js"></script>
+        <script>
+            parse("scatter2",'{{scatter_spec|tojson|safe}}');
+            parse("stream",'{{stream_spec|tojson|safe}}');
+        </script>
+
         <script>
             function openNav() {
               document.getElementById("mySidenav").style.width = "200px";

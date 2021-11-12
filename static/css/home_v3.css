@@ -285,6 +285,53 @@ header {
   color: var(--font_color);
   font-size: 16px;
 }
+/** --------------------------------------------------------------------------- */
+/** Slide 2: Account Categories  */
+/** --------------------------------------------------------------------------- */
+.overall_cat {
+  height: 450px;
+  padding: 0%;
+  margin: 0% 50px 0% 50px;
+  /* border: solid;
+  border-color: white; */
+  color: var(--font_color);
+  margin-top: 0%;
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 0.75fr; 
+  grid-template-rows: 1fr  ; 
+  grid-gap: 0rem ;
+  /* gap: 0px 0px;  */
+  grid-template-areas: 
+    "pie_1 pie_2 pie_3 pie_4 pie_5";
+}
+
+.overall_cat > div {
+  /* border: solid;
+  border-radius: 10px; */
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+#facebook_pie {
+  grid-area: pie_1; 
+  padding-top: 60%;
+}
+#ig_pie {
+  grid-area: pie_2; 
+  padding-top: 60%;
+}
+#twitter_pie {
+  grid-area: pie_3; 
+  padding-top: 60%;
+}
+#youtube_pie {
+  grid-area: pie_4; 
+  padding-top: 60%;
+}
+#legend_pie {
+  grid-area: pie_5; 
+  padding-top: 20%;
+}
 
 /** --------------------------------------------------------------------------- */
 /** Slide 3: Overall Summary  */
@@ -447,3 +494,12 @@ svg {
 /** --------------------------------------------------------------------------- */
 /** Slide 3: Overall Summary  */
 /** --------------------------------------------------------------------------- */
+
+
+.vg-tooltip {
+  
+  color:white;
+  background-color:white;
+  border: none;
+  
+  }
