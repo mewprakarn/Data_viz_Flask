@@ -17,7 +17,7 @@ account_dict = {key:"{:,}".format(overall_data[overall_data.channel == key]['ann
 update_date = pd.to_datetime(overall_data['latest_created_at'].max(),format='%Y-%m-%d %H:%M:%S').strftime('%d%b%Y')
 
 
-f = open('static/data/heatmap.json',)
+f = open('static/data/heatmap12112021.json',)
 heatmap_data = json.load(f)
 f.close()
 
