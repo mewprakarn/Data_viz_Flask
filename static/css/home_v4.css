@@ -471,6 +471,7 @@ header {
 .overall_8 {
   grid-area: content_8;
   margin-left: 30px;
+  margin-right: 5px;
 }
 .overall_8 >span{
   margin-left: 10px;
