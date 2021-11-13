@@ -43,7 +43,7 @@ app.config['SECRET_KEY'] = 'mykey'
 #*Render Template
 @app.route('/')
 def home():
-    return render_template("home_v3.html",account_dict=account_dict,update_date=update_date)
+    return render_template("home_v4.html",account_dict=account_dict,update_date=update_date)
 
 @app.route('/ranking')
 def ranking_page():
@@ -51,11 +51,11 @@ def ranking_page():
 
 @app.route('/engagement')
 def engagement_page():
-    return render_template("engagement.html",heatmap_spec1=heatmap_data,heatmap_spec2=heatmap_data)
+    return render_template("engagement_v2.html",heatmap_spec1=heatmap_data,heatmap_spec2=heatmap_data)
 
 @app.route('/category')
 def category_page():
-    return render_template("category.html",scatter_spec=scatter_data,stream_spec=stream_data)
+    return render_template("category_v2.html",scatter_spec=scatter_data,stream_spec=stream_data)
 
 
 

@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="static/css/home_v3.css">
+        <link rel="stylesheet" href="static/css/home_v4.css">
 
     <!--! Important Library -->   
         <script src="https://d3js.org/d3.v4.js"></script>  
@@ -42,7 +42,7 @@
             <!--TODO: Slide 1 -->
             <div class='overall_slide fade'>
                 <div class='slide-number'>
-                    Overall Accounts
+                    OVERALL ACCOUNTS
                 </div>
                 <div id="overall_logo">
                     <div id="logo_1">
@@ -81,46 +81,37 @@
             
             <!--TODO: Slide 2 -->    
             <div class='overall_slide fade'>
-                <div class='slide-number'>Account Categories</div>
+                <div class='slide-number'>ACCOUNT CATEGORIES</div>
 
                 <div class="overall_cat">
                     <div id="facebook_pie"></div>
                     <div id="ig_pie"></div>
                     <div id="twitter_pie"></div>
                     <div id="youtube_pie"></div>
-                    <div id="legend_pie">Categories</div>
-                    <div id="legend_pie">Categories</div>
+                    <div id="legend_pie"></div>
                 </div>
 
             </div>
 
             <!-- TODO: Slide 3 Overall Summary -->
             <div class='overall_slide fade'>
-                <div class='slide-number'>Overall Summary</div>
-
-                <!-- <div class="overall_header">
-                    <h1>Overall<span id="overall_update_dt"> (updated at {{update_date}})</span></h1>
-                    <span><select id="overall_selector" name="types">
-                        <option value="post">Posts</option>
-                        <option value="engagement">Engagements</option>
-                      </select></span>
-                </div> -->
+                <div class='slide-number'>OVERALL SUMMARY</div>
 
                 <div class="overall">
                     <button class="summary_btn" id="overall_1" value="facebook">
-                        <span><img src="static/images/facebook_2.png" alt="facebook" width="20" height="20"> Facebook</span>
+                        <img src="static/images/facebook_2.png" alt="facebook" width="20" height="20">
                     </button>
                     <button class="summary_btn" id="overall_2" value="ig">
-                        <span><img src="static/images/instagram_2.png" alt="instagram" width="20" height="20"> Instagram</span>
+                        <img src="static/images/instagram_2.png" alt="instagram" width="20" height="20">
                     </button>
                     <button class="summary_btn" id="overall_3" value="twitter">
-                        <span><img src="static/images/twitter_2.png" alt="twitter" width="20" height="20"> Twitter</span>
+                        <img src="static/images/twitter_2.png" alt="twitter" width="20" height="20"> 
                     </button>
                     <button class="summary_btn" id="overall_4" value="youtube">
-                        <span><img src="static/images/youtube_2.png" alt="youtube" width="20" height="20"> Youtube</span>
+                        <img src="static/images/youtube_3.png" alt="youtube" width="20" height="20"> 
                     </button>
 
-                    <span id="overall_update_dt"> (updated at {{update_date}})</span>
+                    <!-- <span id="overall_update_dt"> (updated at {{update_date}})</span> -->
                     <span>
                         <select id="overall_selector" name="types">
                             <option value="post">Posts</option>
@@ -135,13 +126,11 @@
                         <span>Monthly <span class="topic_text">Posts</span>
                     </div>
                     <div class="overall_6" id="d3_growth_change">
-                        <span>Movement of <span class="topic_text">Posts</span></span></div>
-                    <!-- <div class="overall_7" id="d3_pie">
-                        <p>Overall Summary</p>
-                        <p class='summary_number'>4,087,239<p class='summary_text'>Total Posts</p></p>
-                        <p class='summary_number'>5,666,109,372<p class='summary_text'>Total Engagements</p></p>
-                    </div> -->
-                    <div class="overall_8" id="d3_heatmap"><span class="topic_text" style="margin-bottom: 0%;">Posts</span> Concentration</p></div>
+                        <span>Movement of <span class="topic_text">Posts</span></span>
+                    </div>
+                    <div class="overall_8" id="d3_heatmap">
+                        <span class="topic_text" style="margin-bottom: 0%;">Posts</span> Concentration</p>
+                    </div>
                 </div>
 
         </div>
@@ -165,11 +154,11 @@
 
         <!--* Overall Section -->
 
-        <script src="static/js/category_pie.js"></script>
+        <script src="static/js/category_pie_v2.js"></script>
 
-        <script src="static/js/d3_line_total_v2.js"></script>
-        <script src="static/js/d3_growth_change_v2.js"></script>
-        <script src="static/js/d3_heatmap.js"></script>
+        <script src="static/js/d3_line_total_v3.js"></script>
+        <script src="static/js/d3_growth_change_v3.js"></script>
+        <script src="static/js/d3_heatmap_v2.js"></script>
         <script src="static/js/update.js"></script>
 
  
