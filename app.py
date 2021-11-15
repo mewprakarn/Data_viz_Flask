@@ -17,8 +17,12 @@ account_dict = {key:"{:,}".format(overall_data[overall_data.channel == key]['ann
 update_date = pd.to_datetime(overall_data['latest_created_at'].max(),format='%Y-%m-%d %H:%M:%S').strftime('%d%b%Y')
 
 
-f = open('static/data/heatmap12112021.json',)
-heatmap_data = json.load(f)
+f = open('static/data/Heatmap_A15112021.json',)
+heatmap1_data = json.load(f)
+f.close()
+
+f = open('static/data/Heatmap_B15112021.json',)
+heatmap2_data = json.load(f)
 f.close()
 
 f = open('static/data/ranking.json',)
@@ -51,7 +55,7 @@ def ranking_page():
 
 @app.route('/engagement')
 def engagement_page():
-    return render_template("engagement_v2.html",heatmap_spec1=heatmap_data,heatmap_spec2=heatmap_data)
+    return render_template("engagement_v2.html",heatmap_spec1=heatmap1_data,heatmap_spec2=heatmap2_data)
 
 @app.route('/category')
 def category_page():
