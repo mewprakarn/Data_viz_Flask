@@ -443,6 +443,8 @@ header {
   left: 10px;
   grid-area: content_5; 
   
+  margin-right: 30px;
+  
 }
 
 .overall_5 >span {
@@ -452,10 +454,13 @@ header {
 .overall_6 {
   grid-area: content_6;
   margin-top: 10px;
+  
+  margin-right: 30px;
+
+
 }
 .overall_6 >span {
   padding-left: 5px;
-
 }
 .overall_8 {
   grid-area: content_8;
