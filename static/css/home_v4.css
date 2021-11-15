@@ -39,7 +39,8 @@ body{
     background-color: black;
 }
 header {
-    width: 100%;
+    /* width: 100%; */
+    width:var(--main_width);
     margin-top: 0%;
     /* display: flex;
     justify-content: space-between; */
@@ -61,7 +62,8 @@ header {
 .logo_text{
   display: inline-block;
   line-height: 1;
-  margin-left: 0px;
+  margin-left: 10px;
+  margin-top: 10px;
 
 }
 #logo_subtext{
@@ -71,9 +73,9 @@ header {
 
 .cta {
 
-  position: fixed;
-  top:5px;
-  right:5px;
+  position: absolute;
+  top:10px;
+  right:10px;
 }
 
 
