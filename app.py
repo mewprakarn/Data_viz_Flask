@@ -80,32 +80,32 @@ def category_page():
 #     return render_template("altair.html")
 
 #*Altair Plot
-@app.route('/altair')
-def heatmap_plot():
-    #* Load Data
-    url = "https://gist.githubusercontent.com/puripant/857f1981667e8b42da2c72328ba94ead/raw/296d212615ab076254da03573f8f2493007cc76c/medals.csv"
-    df = pd.read_json(url)
-    #* Set drop down list
-    input_dropdown = alt.binding_select(options=df.name.unique())
-    selection = alt.selection_single(fields=['name'], bind=input_dropdown, name='Country')
-    #* Color Settings
-    color = alt.condition(selection,
-                        alt.Color('name:N', legend=None),
-                        alt.value('lightgray'))                     
-    #* Chart Plot
-    plot_data = alt.Chart(df).transform_filter(alt.datum.gold > 0).mark_point(size=50,clip=True ).encode(
-                        x='year:N',
-                        y='gold:Q',
-                        color=color,
-                        fill=color,
-                        tooltip=['name:N','gold:Q'] 
-                    ).add_selection(
-                        selection
-                    ).properties(
-                        width='container',
-                        height=400
-                )
-    return plot_data.to_json()
+# @app.route('/altair')
+# def heatmap_plot():
+#     #* Load Data
+#     url = "https://gist.githubusercontent.com/puripant/857f1981667e8b42da2c72328ba94ead/raw/296d212615ab076254da03573f8f2493007cc76c/medals.csv"
+#     df = pd.read_json(url)
+#     #* Set drop down list
+#     input_dropdown = alt.binding_select(options=df.name.unique())
+#     selection = alt.selection_single(fields=['name'], bind=input_dropdown, name='Country')
+#     #* Color Settings
+#     color = alt.condition(selection,
+#                         alt.Color('name:N', legend=None),
+#                         alt.value('lightgray'))                     
+#     #* Chart Plot
+#     plot_data = alt.Chart(df).transform_filter(alt.datum.gold > 0).mark_point(size=50,clip=True ).encode(
+#                         x='year:N',
+#                         y='gold:Q',
+#                         color=color,
+#                         fill=color,
+#                         tooltip=['name:N','gold:Q'] 
+#                     ).add_selection(
+#                         selection
+#                     ).properties(
+#                         width='container',
+#                         height=400
+#                 )
+#     return plot_data.to_json()
 
 if __name__=='__main__':
     app.run()
