@@ -41,8 +41,8 @@ body{
 header {
     width: 100%;
     margin-top: 0%;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     align-items: center;
     padding: 0%;
     /* background-color: #000000; */
@@ -70,21 +70,10 @@ header {
 }
 
 .cta {
-    order: 3
-}
 
-#cta {
-    margin-left: 20px;
-    padding: 9px 25px;
-    background-color: rgba(0, 136, 169, 1);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-}
-
-#cta:hover {
-    background-color: rgba(0, 136, 169, 0.8);
+  position: fixed;
+  top:5px;
+  right:5px;
 }
 
 
@@ -470,6 +459,8 @@ header {
 }
 .overall_8 {
   grid-area: content_8;
+  position: relative;
+  right: 0%;
   margin-left: 30px;
   /* margin-right: 5px; */
 }
