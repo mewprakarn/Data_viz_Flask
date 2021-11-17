@@ -7,6 +7,7 @@
   --font_color:white;
   --roboto_font:'Roboto',Helvetica, sans-serif;
   --helvetica_font:Helvetica, sans-serif;
+  --margin-top:30px;
 }
 
 
@@ -133,6 +134,7 @@ header {
     /* max-height: var(--main_height); */
     position: relative;
     margin: auto;
+    margin-top: var(--margin-top);
     /* border: solid;
     border-color: #edf0f1; */
   }
@@ -526,6 +528,8 @@ svg {
   max-height: 400px;
   position: relative;
   margin: auto;
+  
+  margin-top: var(--margin-top);
   /* border: solid;
   border-color: white; */
 }
@@ -533,6 +537,7 @@ svg {
 .engagement-container >div{
   position: relative;
   margin-left: 90px;
+  margin-top: var(--margin-top);
 }
 
 
@@ -543,7 +548,7 @@ svg {
 /** --------------------------------------------------------------------------- */
 .category-container{
   width: 1150px;
-  max-height: 400px;
+  /* max-height: 400px; */
   position: relative;
   margin: auto;
   /* padding: 0%;
@@ -551,10 +556,10 @@ svg {
   border-color: white; */
   color: var(--font_color);
 
-  margin-top: 0%;
+  margin-top: var(--margin-top);
   display: grid; 
   grid-template-columns: 1fr 1fr 1fr; 
-  grid-template-rows: 1fr 0.75fr; 
+  grid-template-rows: 1fr; 
   grid-gap: 0rem ;
   grid-template-areas: 
     "cat_1 cat_2"; 
