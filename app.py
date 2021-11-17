@@ -25,7 +25,7 @@ f = open('static/data/Heatmap_B15112021.json',)
 heatmap2_data = json.load(f)
 f.close()
 
-f = open('static/data/ranking.json',)
+f = open('static/data/Ranking_v2.json',)
 ranking_data = json.load(f)
 f.close()
 
@@ -60,12 +60,6 @@ def engagement_page():
 @app.route('/category')
 def category_page():
     return render_template("category_v2.html",scatter_spec=scatter_data,stream_spec=stream_data)
-
-
-
-
-
-
 
 
 
