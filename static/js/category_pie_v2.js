@@ -38,17 +38,18 @@ var dataConversion = function (d) {
 }
 
 // data load
-d3.csv("data/dfCatID.csv", dataConversion, function (data) {
+d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
+        var formatPercent = d3.format(".1%");
         // var dataset = data;
         var category = data.map (function (d) {return d.category});
         var nFBid = data.map (function (d) {return +d.nFBid});
         var nIGid = data.map (function (d) {return +d.nIGid});
         var nTTid = data.map (function (d) {return +d.nTTid});
         var nYTid = data.map (function (d) {return +d.nYTid});        
-        var fbIDp = data.map (function (d) {return +d.fbIDp}); 
-        var igIDp = data.map (function (d) {return +d.igIDid}); 
-        var ttIDp = data.map (function (d) {return +d.ttIDp});
-        var ytIDp = data.map (function (d) {return +d.ytIDp}); 
+        var fbIDp = data.map (function (d) {return formatPercent(+d.fbIDp)}); 
+        var igIDp = data.map (function (d) {return formatPercent(+d.igIDp)}); 
+        var ttIDp = data.map (function (d) {return formatPercent(+d.ttIDp)});
+        var ytIDp = data.map (function (d) {return formatPercent(+d.ytIDp)}); 
         console.log(ytIDp);
         var w = 180;
         var h = 180;
@@ -95,7 +96,19 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
                                      .style('font-family',"Helvetica, sans-serif")
                                      .style('font-size',"14px")
                                      .text(category[i] + ":" + "\n" + nFBid[i]);
-                                
+
+                                // Percentage
+                                arcsFB.append("text")
+                                        .style("left", w/2  + "px")
+                                        .style("top", h/2 + "px")
+                                        .style("text-anchor", "middle")
+                                        .attr("class", "sublabel")
+                                        .style("fill", "white")
+                                        .style('font-family',"Helvetica, sans-serif")
+                                        .style('font-size',"14px")
+                                        .attr("dy", "1.2em")
+                                        .text("(" + fbIDp[i] +")");       
+
                                 svgFB.select(".logo").style('opacity',0);
                            })
                            .on("mouseout", function(d,i) {
@@ -105,7 +118,7 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
                            });
 
         var logoFB = svgFB.append("svg:image")
-                         .attr("xlink:href", "images/facebook_2.png")
+                         .attr("xlink:href", "static/images/facebook_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
@@ -132,15 +145,27 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
                         .attr("d", arc)
                         .on("mouseover", function(d,i) {
                         arcsIG.append("text")
-                        .style("left", w/2  + "px")
-                        .style("top", h/2 + "px")
+                                .style("left", w/2  + "px")
+                                .style("top", h/2 + "px")
+                                        .style("text-anchor", "middle")
+                                        .attr("class", "label")
+                                        .style("fill", "white")
+                                        .style('font-family',"Helvetica, sans-serif")
+                                        .style('font-size',"14px")
+                                        .text(category[i] + ":" + "\n" + nIGid[i]);
+                        console.log(igIDp);
+                        // Percentage
+                        arcsIG.append("text")
+                                .style("left", w/2  + "px")
+                                .style("top", h/2 + "px")
                                 .style("text-anchor", "middle")
-                                .attr("class", "label")
+                                .attr("class", "sublabel")
                                 .style("fill", "white")
                                 .style('font-family',"Helvetica, sans-serif")
                                 .style('font-size',"14px")
-                                .text(category[i] + ":" + "\n" + nIGid[i])
-                                 
+                                .attr("dy", "1.2em")
+                                .text("(" + igIDp[i] +")");         
+
                         svgIG.select(".logo").style('opacity',0);
                        })
                        .on("mouseout", function(d,i) {
@@ -151,7 +176,7 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
 
 
         var logoIG = svgIG.append("svg:image")
-                         .attr("xlink:href", "images/instagram_2.png")
+                         .attr("xlink:href", "static/images/instagram_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
@@ -186,6 +211,19 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
                                  .style('font-family',"Helvetica, sans-serif")
                                  .style('font-size',"14px")
                                  .text(category[i] + ":" + "\n" + nTTid[i]);
+
+                                // Percentage
+                                arcsTT.append("text")
+                                .style("left", w/2  + "px")
+                                .style("top", h/2 + "px")
+                                .style("text-anchor", "middle")
+                                .attr("class", "sublabel")
+                                .style("fill", "white")
+                                .style('font-family',"Helvetica, sans-serif")
+                                .style('font-size',"14px")
+                                .attr("dy", "1.2em")
+                                .text("(" + ttIDp[i] +")");
+
                                  svgTT.select(".logo").style('opacity',0);
                        })
                        .on("mouseout", function(d,i) {
@@ -196,7 +234,7 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
 
 
         var logoTT = svgTT.append("svg:image")
-                         .attr("xlink:href", "images/twitter_2.png")
+                         .attr("xlink:href", "static/images/twitter_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
@@ -232,7 +270,7 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
                                         .style('font-size',"14px")
                                         .text(category[i] + ":" + nYTid[i]);
                                         
-                                        // .text(category[i] + ":" )
+                                // Percentage
                                 arcsYT.append("text")
                                         .style("left", w/2  + "px")
                                         .style("top", h/2 + "px")
@@ -242,7 +280,7 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
                                         .style('font-family',"Helvetica, sans-serif")
                                         .style('font-size',"14px")
                                         .attr("dy", "1.2em")
-                                        .text("(" + ytIDp[i]*100 + "%" + ")");
+                                        .text("(" + ytIDp[i] +")");
                                 
                                 svgYT.select(".logo").style('opacity',0);
                            })
@@ -254,7 +292,7 @@ d3.csv("data/dfCatID.csv", dataConversion, function (data) {
 
 
         var logoYT= svgYT.append("svg:image")
-                         .attr("xlink:href", "images/youtube_2.png")
+                         .attr("xlink:href", "static/images/youtube_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
