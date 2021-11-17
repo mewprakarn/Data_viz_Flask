@@ -41,7 +41,12 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
         var nFBid = data.map (function (d) {return +d.nFBid});
         var nIGid = data.map (function (d) {return +d.nIGid});
         var nTTid = data.map (function (d) {return +d.nTTid});
-        var nYTid = data.map (function (d) {return +d.nYTid});        
+        var nYTid = data.map (function (d) {return +d.nYTid});   
+        var fbIDp = data.map (function (d) {return +d.fbIDp}); 
+        var igIDp = data.map (function (d) {return +d.igIDid}); 
+        var ttIDp = data.map (function (d) {return +d.ttIDp});
+        var ytIDp = data.map (function (d) {return +d.ytIDp}); 
+             
 
         var w = 180;
         var h = 180;
@@ -87,9 +92,10 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                      .style("fill", "white")
                                      .style('font-family',"Helvetica, sans-serif")
                                      .style('font-size',"14px")
-                                     .text(category[i] + ":" + "\n" + nFBid[i]);
-                                
-                                svgFB.select(".logo").style('opacity',0);
+                                     .text(category[i] + ":" + nFBid[i] + "(" + fbIDp[i]*100 + "%" + ")")
+                        
+                        svgFB.select(".logo").style('opacity',0);
+
                            })
                            .on("mouseout", function(d,i) {
                                   arcsFB.select(".label").remove();                            
@@ -132,7 +138,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                 .style("fill", "white")
                                 .style('font-family',"Helvetica, sans-serif")
                                 .style('font-size',"14px")
-                                .text(category[i] + ":" + "\n" + nIGid[i])
+                                .text(category[i] + ": " + nIGid[i] + "(" + igIDp[i]*100 + "%" + ")")
                                  
                         svgIG.select(".logo").style('opacity',0);
                        })
@@ -178,7 +184,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                  .style("fill", "white")
                                  .style('font-family',"Helvetica, sans-serif")
                                  .style('font-size',"14px")
-                                 .text(category[i] + ":" + "\n" + nTTid[i]);
+                                 .text(category[i] + ": " + nTTid[i] + "(" + ttIDp[i]*100 + "%" + ")")
                                  svgTT.select(".logo").style('opacity',0);
                        })
                        .on("mouseout", function(d,i) {
@@ -223,8 +229,9 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                         .style("fill", "white")
                                         .style('font-family',"Helvetica, sans-serif")
                                         .style('font-size',"14px")
-                                        .text(category[i] + ":" + "\n" + nYTid[i])
+                                        .text(category[i] + ":" + nYTid[i] + "(" + ytIDp[i]*100 + "%" + ")")
                                         // .text(category[i] + ":" )
+
                                 arcsYT.append("text")
                                         .style("left", w/2  + "px")
                                         .style("top", h/2 + "px")
