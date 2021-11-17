@@ -14,7 +14,6 @@
 // d3.select("body")
 //     .append("div")
 //     .attr("class", "Legend");
-
 // set the dimensions and margins of the graph
 var growth_change_container = document.getElementById('d3_growth_change'),
         cat_pie_legend_width       = 860,
@@ -25,29 +24,32 @@ var growth_change_container = document.getElementById('d3_growth_change'),
 
 // function of data conversion
 var dataConversion = function (d) {
-                                    return {
-                                      category : d.category,
-                                      nFBid : +d.facebook_id_cor,
-                                      nIGid : +d.instagram_id,
-                                      nTTid : +d.twitter_id_cor,
-                                      nYTid : +d.youtube_id
-                                    };
+        return {
+          category : d.category,
+          nFBid : +d.facebook_id_cor,
+          nIGid : +d.instagram_id,
+          nTTid : +d.twitter_id_cor,
+          nYTid : +d.youtube_id,
+          fbIDp : +d.fbIDp,
+          igIDp : +d.igIDp,
+          ttIDp : +d.ttIDp,
+          ytIDp : +d.ytIDp,
+        };
 }
 
 // data load
-d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
+d3.csv("data/dfCatID.csv", dataConversion, function (data) {
         // var dataset = data;
         var category = data.map (function (d) {return d.category});
         var nFBid = data.map (function (d) {return +d.nFBid});
         var nIGid = data.map (function (d) {return +d.nIGid});
         var nTTid = data.map (function (d) {return +d.nTTid});
-        var nYTid = data.map (function (d) {return +d.nYTid});   
+        var nYTid = data.map (function (d) {return +d.nYTid});        
         var fbIDp = data.map (function (d) {return +d.fbIDp}); 
         var igIDp = data.map (function (d) {return +d.igIDid}); 
         var ttIDp = data.map (function (d) {return +d.ttIDp});
         var ytIDp = data.map (function (d) {return +d.ytIDp}); 
-             
-
+        console.log(ytIDp);
         var w = 180;
         var h = 180;
 
@@ -92,10 +94,9 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                      .style("fill", "white")
                                      .style('font-family',"Helvetica, sans-serif")
                                      .style('font-size',"14px")
-                                     .text(category[i] + ":" + nFBid[i] + "(" + fbIDp[i]*100 + "%" + ")")
-                        
-                        svgFB.select(".logo").style('opacity',0);
-
+                                     .text(category[i] + ":" + "\n" + nFBid[i]);
+                                
+                                svgFB.select(".logo").style('opacity',0);
                            })
                            .on("mouseout", function(d,i) {
                                   arcsFB.select(".label").remove();                            
@@ -104,7 +105,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                            });
 
         var logoFB = svgFB.append("svg:image")
-                         .attr("xlink:href", "static/images/facebook_2.png")
+                         .attr("xlink:href", "images/facebook_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
@@ -138,7 +139,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                 .style("fill", "white")
                                 .style('font-family',"Helvetica, sans-serif")
                                 .style('font-size',"14px")
-                                .text(category[i] + ": " + nIGid[i] + "(" + igIDp[i]*100 + "%" + ")")
+                                .text(category[i] + ":" + "\n" + nIGid[i])
                                  
                         svgIG.select(".logo").style('opacity',0);
                        })
@@ -150,7 +151,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
 
 
         var logoIG = svgIG.append("svg:image")
-                         .attr("xlink:href", "static/images/instagram_2.png")
+                         .attr("xlink:href", "images/instagram_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
@@ -184,7 +185,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                  .style("fill", "white")
                                  .style('font-family',"Helvetica, sans-serif")
                                  .style('font-size',"14px")
-                                 .text(category[i] + ": " + nTTid[i] + "(" + ttIDp[i]*100 + "%" + ")")
+                                 .text(category[i] + ":" + "\n" + nTTid[i]);
                                  svgTT.select(".logo").style('opacity',0);
                        })
                        .on("mouseout", function(d,i) {
@@ -195,7 +196,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
 
 
         var logoTT = svgTT.append("svg:image")
-                         .attr("xlink:href", "static/images/twitter_2.png")
+                         .attr("xlink:href", "images/twitter_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
@@ -229,9 +230,9 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                         .style("fill", "white")
                                         .style('font-family',"Helvetica, sans-serif")
                                         .style('font-size',"14px")
-                                        .text(category[i] + ":" + nYTid[i] + "(" + ytIDp[i]*100 + "%" + ")")
+                                        .text(category[i] + ":" + nYTid[i]);
+                                        
                                         // .text(category[i] + ":" )
-
                                 arcsYT.append("text")
                                         .style("left", w/2  + "px")
                                         .style("top", h/2 + "px")
@@ -241,7 +242,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
                                         .style('font-family',"Helvetica, sans-serif")
                                         .style('font-size',"14px")
                                         .attr("dy", "1.2em")
-                                        .text("Accounts");
+                                        .text("(" + ytIDp[i]*100 + "%" + ")");
                                 
                                 svgYT.select(".logo").style('opacity',0);
                            })
@@ -253,7 +254,7 @@ d3.csv("static/data/dfCatID.csv", dataConversion, function (data) {
 
 
         var logoYT= svgYT.append("svg:image")
-                         .attr("xlink:href", "static/images/youtube_2.png")
+                         .attr("xlink:href", "images/youtube_2.png")
                          .attr("class","logo")
                          .attr("x",w/2 -20)
                          .attr("y",h/2 -20)
