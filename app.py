@@ -25,7 +25,7 @@ f = open('static/data/Heatmap_B15112021.json',)
 heatmap2_data = json.load(f)
 f.close()
 
-f = open('static/data/Ranking_v2.json',)
+f = open('static/data/Ranking_v3.json',)
 ranking_data = json.load(f)
 f.close()
 
