@@ -36,7 +36,7 @@ function bar_growth(data, selectedGroup){
     var formatPercent = d3.format(".1%");
     // add y1 axis
     var y = d3.scaleLinear()
-        .domain([-0.2,0.2])
+        .domain([-0.3,0.3])
         .range([(growth_change_height),0]);
 
     growth_change_svg.append("g")
@@ -68,7 +68,7 @@ function bar_growth(data, selectedGroup){
         .attr('class','x_bar_label')  
             .text(function(d) {return formatPercent(d[selectedGroup]);})
                 .attr("x", function (d) {return x(+d.date);})
-                .attr("y", function(d) {if(d[selectedGroup]<0){return  y(+d[selectedGroup]) } else {return y(+d[selectedGroup])}})
+                .attr("y", function(d) {if(d[selectedGroup]>0.5){return  y(+0.34) } else if (d[selectedGroup] < -0.5) {return y(-0.35) } else {return y(+d[selectedGroup])}})
                 .attr("font-family" , "sans-serif")
                 .attr("font-size" , "12px")
                 .attr("fill" , "white")
@@ -91,7 +91,7 @@ function update_bar(data,selectedGroup) {
 
     // Update y1 axis
     var y = d3.scaleLinear()
-        .domain([-0.2,0.2])
+        .domain([-0.3,0.3])
         .range([(growth_change_height),0]);
 
     // Update X axis    
@@ -108,7 +108,7 @@ function update_bar(data,selectedGroup) {
         .attr("height",function(d) {if(d.selectedGroup<0){return y(+d.selectedGroup)-(growth_change_height/2)} else {return (growth_change_height/2)-y(+d.selectedGroup)} })
         .style("fill", function(d){ if(d.selectedGroup<0){return "#ff6961"} else {return "#69b3a2"}});
         
-
+        
     // Update Bar Labels
     var label = growth_change_svg.selectAll(".x_bar_label")
 
@@ -123,7 +123,7 @@ function update_bar(data,selectedGroup) {
         .attr("class", "x_bar_label")
             .text(function(d) {return formatPercent(+d.selectedGroup);})
                 .attr("x", function (d) {return x(+d.date)-20;})
-                .attr("y", function(d) {if(d.selectedGroup<0){return  y(+d.selectedGroup) } else {return y(+d.selectedGroup)}})
+                .attr("y", function(d) {if(d.selectedGroup>0.5){return  y(+0.34) } else if (d.selectedGroup < -0.5) {return y(-0.35) } else {return y(+d.selectedGroup)}})
                 .attr("font-family" , "sans-serif")
                 .attr("font-size" , "12px")
                 .attr("fill" , "white")

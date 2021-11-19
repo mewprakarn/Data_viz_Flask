@@ -67,7 +67,7 @@ function heatmap(data, selectedGroup){
   // Build color scale
   var myColor = d3.scaleSequential()
     // .domain([0,d3.max(data, function(d) {return d[selectedGroup]})])
-    .domain([0,20])
+    .domain([5,20])
     .interpolator(d3.interpolateGreens);
 
     // .interpolator(d3.interpolateHsl("white", "#69b3a2"));
@@ -149,8 +149,8 @@ function update_heatmap(data,selectedGroup) {
       .domain(["all_platforms","facebook","ig","youtube","twitter"])
       .range([d3.interpolateGreens,d3.interpolateBlues,d3.interpolateBuPu, d3.interpolateReds,d3.interpolateBlues]);
   var myColor = d3.scaleSequential()
-    .domain([0,d3.max(new_data, function(d) {return d.selectedGroup})])
-    // .domain([0,20])
+    // .domain([0,d3.max(new_data, function(d) {return d.selectedGroup})])
+    .domain([5,20])
     .interpolator(heatmap_color(selectedGroup));
 
 
