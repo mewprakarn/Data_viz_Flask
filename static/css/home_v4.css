@@ -537,7 +537,7 @@ svg {
 .engagement-container >div{
   position: relative;
   margin-left: 90px;
-  margin-top: var(--margin-top);
+  margin-top: 20;
 }
 
 
