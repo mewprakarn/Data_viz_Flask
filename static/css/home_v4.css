@@ -530,7 +530,7 @@ svg {
 /** --------------------------------------------------------------------------- */
 .engagement-container{
   width: 960px;
-  max-height: 400px;
+  max-height: 800px;
   position: relative;
   margin: auto;
   
@@ -541,7 +541,7 @@ svg {
 
 .engagement-container >div{
   position: relative;
-  margin-left: 90px;
+  margin-left: 50px;
   margin-top: 20;
 }
 
@@ -585,7 +585,11 @@ svg {
 /** --------------------------------------------------------------------------- */
 .ranking-container{
   width: 960px;
-  height: 2000px;
-  margin: auto;
+  position: relative;
+  margin-right: 100px;
   margin-top: var(--margin-top);
+}
+
+.ranking-container > span{
+  color: white;
 }
