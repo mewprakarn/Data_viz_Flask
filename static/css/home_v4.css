@@ -588,7 +588,8 @@ svg {
   width: 1440px;
   position: static;
   margin: auto;
-  padding-left: 7%;
+  padding-left: 5%;
+  margin-top: 20px;
 
 }
 .ranking-container  span{
