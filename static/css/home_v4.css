@@ -583,14 +583,14 @@ svg {
 /** --------------------------------------------------------------------------- */
 /** Page Ranking  */
 /** --------------------------------------------------------------------------- */
-.ranking-container{
-  /* width: var(--main_width); */
-  position: relative;
-  margin-left: 250px;
-  margin-right: auto;
-  margin-top: var(--margin-top);
-}
 
+.ranking-container {
+  width: 1440px;
+  position: static;
+  margin: auto;
+  padding-left: 7%;
+
+}
 .ranking-container  span{
   color: white;
   font-family:'Roboto',Helvetica, sans-serif;
